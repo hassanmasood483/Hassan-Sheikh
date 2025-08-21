@@ -1,0 +1,89 @@
+{% comment %} Gift Grid with Modal {% endcomment %}
+
+<section id="gift-grid" class="gift-grid page-width">
+  {% if section.settings.section_title != blank %}
+    <h2 class="gift-grid__title">{{ section.settings.section_title }}</h2>
+  {% endif %}
+
+  <div class="gift-grid__grid">
+    {% for block in section.blocks %}
+      {% assign p = block.settings.product %}
+      {% if p %}
+        <article class="gift-grid__item" {{ block.shopify_attributes }}>
+          <button class="gift-grid__thumb"
+                  type="button"
+                  data-product-json='{{ p | json | escape }}'
+                  aria-label="Open {{ p.title }}">
+            {% if p.featured_image %}
+              <img src="{{ p.featured_image | image_url: width: 800 }}" alt="{{ p.title | escape }}" loading="lazy">
+            {% else %}
+              <div class="gift-grid__placeholder">{{ p.title }}</div>
+            {% endif %}
+          </button>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {%- comment -%} Modal Skeleton {%- endcomment -%}
+  <div id="product-modal" class="product-modal" hidden>
+    <div class="product-modal__backdrop" data-close></div>
+    <div class="product-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+      <button class="product-modal__close" type="button" data-close aria-label="Close">×</button>
+
+      <div class="product-modal__content">
+        <div class="pm-head">
+          <h3 id="pm-title"></h3>
+          <div id="pm-price"></div>
+        </div>
+        <div id="pm-desc" class="pm-desc"></div>
+
+        <form id="pm-form">
+          <div id="pm-options"></div>
+
+          <input type="hidden" name="id" id="pm-variant-id">
+          <button class="pm-add" type="submit">ADD TO CART</button>
+          <div class="pm-status" id="pm-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if section.settings.upsell_product %}
+  <script>
+    // attach upsell JSON to the section as a data attribute
+    document.addEventListener('DOMContentLoaded', function() {
+      var el = document.getElementById('gift-grid');
+      if (el) el.dataset.upsell = {{ section.settings.upsell_product | json }};
+    });
+  </script>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Gift Grid",
+  "class": "section--gift-grid",
+  "settings": [
+    { "type": "text", "id": "section_title", "label": "Section title", "default": "Tisso vision in the wild" },
+    { "type": "product", "id": "upsell_product", "label": "Upsell product (Soft Winter Jacket)" }
+  ],
+  "blocks": [
+    { "type": "product", "name": "Product", "settings": [{ "type": "product", "id": "product", "label": "Product" }] }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Gift Grid", "blocks": [{ "type": "product" }, { "type": "product" }, { "type": "product" }, { "type": "product" }, { "type": "product" }, { "type": "product" }] }]
+}
+{% endschema %}
+
+{% stylesheet %}
+  /* keep minimal here; bulk styles in assets/gift-guide.css */
+{% endstylesheet %}
+
+{% javascript %}
+  /* keep empty; full JS lives in assets/gift-guide.js */
+{% endjavascript %}
+
+<script src="{{ 'gift-guide.js' | asset_url }}" defer></script>
+<link rel="stylesheet" href="{{ 'gift-guide.css' | asset_url }}">

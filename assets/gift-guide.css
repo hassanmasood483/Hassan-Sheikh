@@ -1,0 +1,37 @@
+.page-width { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+/* Banner */
+.gift-banner { position: relative; overflow: hidden; }
+.gift-banner__media img { width: 100%; height: auto; display: block; }
+.gift-banner__content { position: relative; padding: 48px 0; }
+.gift-banner__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; margin-bottom: 16px; }
+.gift-banner__brand { font-weight: 700; letter-spacing: .06em; }
+.gift-banner__eyebrow { opacity: .8; }
+.gift-banner__cta { background: #ffeb3b; padding: 8px 12px; border-radius: 4px; font-weight: 600; }
+.gift-banner__title { font-size: clamp(28px, 6vw, 56px); margin: 12px 0; line-height: 1.05; }
+.gift-banner__subtext { max-width: 640px; opacity: .9; margin-bottom: 20px; }
+.gift-banner__primary-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border: 2px solid #000; transition: transform .15s ease; }
+.gift-banner__primary-btn:hover { transform: translateX(3px); }
+.gift-banner__bottom-note { margin-top: 16px; font-size: 12px; opacity: .7; }
+
+/* Grid */
+.gift-grid__title { font-size: 22px; margin: 28px 0 16px; }
+.gift-grid__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.gift-grid__thumb { width: 100%; border: 0; padding: 0; background: none; cursor: pointer; }
+.gift-grid__thumb img { width: 100%; height: auto; display: block; }
+
+/* Modal */
+.product-modal[hidden] { display: none !important; }
+.product-modal { position: fixed; inset: 0; z-index: 999; }
+.product-modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.5); }
+.product-modal__dialog { position: relative; margin: 8vh auto; background: #fff; width: min(420px, 92vw); padding: 18px 18px 22px; border-radius: 8px; }
+.product-modal__close { position: absolute; top: 8px; right: 10px; font-size: 22px; background: none; border: 0; cursor: pointer; }
+.pm-head { display:flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.pm-desc { font-size: 14px; opacity: .85; margin: 10px 0 12px; max-height: 120px; overflow:auto; }
+.pm-add { width: 100%; padding: 12px; border: 0; background: #000; color: #fff; font-weight: 700; cursor: pointer; }
+.pm-status { margin-top: 8px; font-size: 13px; }
+
+/* Responsive */
+@media (max-width: 749px) {
+  .gift-grid__grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+}

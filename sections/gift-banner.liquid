@@ -1,0 +1,51 @@
+{% comment %}
+  Gift Banner Section – No jQuery, editable via schema.
+{% endcomment %}
+
+<section id="gift-banner" class="gift-banner">
+  <div class="gift-banner__media">
+    <picture>
+      <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_bg | image_url: width: 1200 }}">
+      <img src="{{ section.settings.desktop_bg | image_url: width: 2400 }}" alt="{{ section.settings.title | escape }}" loading="eager">
+    </picture>
+  </div>
+
+  <div class="gift-banner__content page-width">
+    <div class="gift-banner__top">
+      <span class="gift-banner__brand">{{ section.settings.brand_label }}</span>
+      <span class="gift-banner__eyebrow">{{ section.settings.eyebrow }}</span>
+      <a class="gift-banner__cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+    </div>
+
+    <h1 class="gift-banner__title">{{ section.settings.title }}</h1>
+    <p class="gift-banner__subtext">{{ section.settings.subtext }}</p>
+
+    <a class="gift-banner__primary-btn" href="{{ section.settings.primary_btn_link }}">
+      {{ section.settings.primary_btn_label }}
+      <span class="btn-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <div class="gift-banner__bottom-note">{{ section.settings.bottom_note }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gift Banner",
+  "class": "section--gift-banner",
+  "settings": [
+    { "type": "text", "id": "brand_label", "label": "Brand label", "default": "TISSO VISION" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Find the ideal gift for your loved ones." },
+    { "type": "text", "id": "title", "label": "Title", "default": "The Gift Guide" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Discover joy: Your ultimate holiday gift destination..." },
+    { "type": "text", "id": "primary_btn_label", "label": "Primary button label", "default": "Shop now" },
+    { "type": "url", "id": "primary_btn_link", "label": "Primary button link" },
+    { "type": "text", "id": "cta_label", "label": "Top-right CTA label", "default": "CHOOSE GIFT" },
+    { "type": "url", "id": "cta_link", "label": "Top-right CTA link" },
+    { "type": "text", "id": "bottom_note", "label": "Bottom note", "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES..." },
+    { "type": "image_picker", "id": "desktop_bg", "label": "Desktop background" },
+    { "type": "image_picker", "id": "mobile_bg", "label": "Mobile background" }
+  ],
+  "presets": [{ "name": "Gift Banner" }]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+{
+  "name": "Gift Guide",
+  "sections": {
+    "gift-banner": {
+      "type": "gift-banner",
+      "settings": {
+        "eyebrow": "Find the ideal gift for your loved ones.",
+        "title": "The Gift Guide",
+        "subtext": "Discover joy: Your ultimate holiday gift destination. Explore our curated selection and find the perfect gifts to delight your loved ones this season.",
+        "primary_btn_label": "Shop now",
+        "primary_btn_link": "/collections/all",
+        "cta_label": "CHOOSE GIFT",
+        "cta_link": "/collections/all",
+        "brand_label": "TISSO VISION",
+        "bottom_note": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6X",
+        "desktop_bg": "shopify:\/\/shop_images\/placeholder.png",
+        "mobile_bg": "shopify:\/\/shop_images\/placeholder.png"
+      }
+    },
+    "gift-grid": {
+      "type": "gift-grid",
+      "settings": {
+        "section_title": "Tisso vision in the wild",
+        "upsell_product": null
+      },
+      "blocks": {
+        "p1": { "type": "product", "settings": { "product": null } },
+        "p2": { "type": "product", "settings": { "product": null } },
+        "p3": { "type": "product", "settings": { "product": null } },
+        "p4": { "type": "product", "settings": { "product": null } },
+        "p5": { "type": "product", "settings": { "product": null } },
+        "p6": { "type": "product", "settings": { "product": null } }
+      },
+      "block_order": ["p1","p2","p3","p4","p5","p6"]
+    }
+  },
+  "order": ["gift-banner","gift-grid"]
+}
